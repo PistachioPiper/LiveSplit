@@ -7,7 +7,7 @@ namespace LiveSplit.Updates
     {
         public string UpdateName => "LiveSplit";
 
-        public string XMLURL => "http://livesplit.org/update/update.xml";
+        public string XMLURL => "";
 
         public string UpdateURL => "http://livesplit.org/update/";
 

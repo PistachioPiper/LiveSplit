@@ -799,6 +799,7 @@ namespace LiveSplit.View
                     skipSplitMenuItem.Enabled = false;
                 undoSplitMenuItem.Enabled = true;
             });
+            GenerateRandomImage();
         }
 
         void CurrentState_OnStart(object sender, EventArgs e)
