@@ -27,6 +27,8 @@ namespace LiveSplit.UI.LayoutSavers
             SettingsHelper.CreateSetting(document, element, "PausedColor", settings.PausedColor) ^
             SettingsHelper.CreateSetting(document, element, "TextOutlineColor", settings.TextOutlineColor) ^
             SettingsHelper.CreateSetting(document, element, "ShadowsColor", settings.ShadowsColor) ^
+            SettingsHelper.CreateSetting(document, element, "SilverSegmentsColor", settings.SilverSegmentsColor) ^
+            SettingsHelper.CreateSetting(document, element, "UseSilverSegmentsColor", settings.UseSilverSegmentsColor) ^
             SettingsHelper.CreateSetting(document, element, "TimesFont", settings.TimesFont) ^
             SettingsHelper.CreateSetting(document, element, "TimerFont", settings.TimerFont) ^
             SettingsHelper.CreateSetting(document, element, "TextFont", settings.TextFont) ^
@@ -36,10 +38,12 @@ namespace LiveSplit.UI.LayoutSavers
             SettingsHelper.CreateSetting(document, element, "DropShadows", settings.DropShadows) ^
             SettingsHelper.CreateSetting(document, element, "BackgroundType", settings.BackgroundType) ^
             SettingsHelper.CreateSetting(document, element, "BackgroundImage", settings.BackgroundImage) ^
+            SettingsHelper.CreateSetting(document, element, "BackgroundFolder", settings.BackgroundFolder) ^
             SettingsHelper.CreateSetting(document, element, "ImageOpacity", settings.ImageOpacity) ^
             SettingsHelper.CreateSetting(document, element, "ImageBlur", settings.ImageBlur) ^
             SettingsHelper.CreateSetting(document, element, "Opacity", settings.Opacity) ^
-            SettingsHelper.CreateSetting(document, element, "MousePassThroughWhileRunning", settings.MousePassThroughWhileRunning);
+            SettingsHelper.CreateSetting(document, element, "MousePassThroughWhileRunning", settings.MousePassThroughWhileRunning) ^
+            SettingsHelper.CreateSetting(document, element, "AllowResizing", settings.AllowResizing);
         }
 
         public int CreateLayoutNode(XmlDocument document, XmlElement parent, ILayout layout)

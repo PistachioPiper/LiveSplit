@@ -65,6 +65,8 @@ namespace LiveSplit.View
         private Image blurredBackground { get; set; }
         private Image bakedBackground { get; set; }
 
+        private bool SizeChangedByMenu { get; set; }
+
         public CommandServer Server { get; set; }
 
         protected GraphicsCache GlobalCache { get; set; }
@@ -78,6 +80,8 @@ namespace LiveSplit.View
 
         private bool DontRedraw = false;
 
+        private string RandomImageFilePath { get; set; }
+
         protected Region UpdateRegion { get; set; }
 
         public const int WM_NCLBUTTONDOWN = 0xA1;
@@ -85,6 +89,8 @@ namespace LiveSplit.View
         public const string SETTINGS_PATH = "settings.cfg";
         const int WS_MINIMIZEBOX = 0x20000;
         const int CS_DBLCLKS = 0x8;
+
+        private Random _random;
 
         protected override CreateParams CreateParams
         {
@@ -179,9 +185,15 @@ namespace LiveSplit.View
 
         private void Init(string splitsPath = null, string layoutPath = null)
         {
+            _random = new Random();
+
+            RandomImageFilePath = "";
+
             LiveSplitCoreFactory.LoadLiveSplitCore();
 
             SetWindowTitle();
+
+            SizeChangedByMenu = false;
 
             SpeedrunCom.Authenticator = new SpeedrunComApiKeyPrompt();
 
@@ -211,6 +223,7 @@ namespace LiveSplit.View
 
             UpdateRecentSplits();
             UpdateRecentLayouts();
+            UpdateRandomImage();
 
             var timerOnlyRun = new StandardRunFactory().Create(ComparisonGeneratorsFactory);
 
@@ -315,12 +328,84 @@ namespace LiveSplit.View
             TopMost = Layout.Settings.AlwaysOnTop;
             BackColor = Color.Black;
 
+            GenerateRandomImage();
+
             Server = new CommandServer(CurrentState);
             Server.Start();
 
             new System.Timers.Timer(1000) { Enabled = true }.Elapsed += RaceRefreshTimer_Elapsed;
 
             InitDragAndDrop();
+        }
+
+        private void UpdateRandomImage()
+        {
+            var randomizeImageMenuItem = new ToolStripMenuItem("Randomize Image");
+            randomizeImageMenuItem.Click += randomImageMenuItem_Click;
+            randomImageMenuItem.DropDownItems.Add(randomizeImageMenuItem);
+            var openRandomImageMenuItem = new ToolStripMenuItem("Open Image");
+            openRandomImageMenuItem.Click += openRandomImageMenuItem_Click;
+            randomImageMenuItem.DropDownItems.Add(openRandomImageMenuItem);
+        }
+
+        private void SetBackgroundImage(string filePath)
+        {
+            try
+            {
+                Layout.Settings.BackgroundImage = Image.FromFile(filePath);
+                Layout.Settings.BackgroundType = BackgroundType.Image;
+            }
+            catch
+            {
+                MessageBox.Show("Random Image failed to load!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
+
+        public void GenerateRandomImage()
+        {
+            if (Layout.Settings.BackgroundType != BackgroundType.RandomImage)
+                return;
+
+            if (Layout.Settings.BackgroundFolder == null)
+                return;
+
+            new Thread(DoRandomImageSelectionThread).Start();
+        }
+
+        public void DoRandomImageSelectionThread()
+        {
+            string[] files;
+            try
+            {
+                files = Directory.GetFiles(Layout.Settings.BackgroundFolder);
+            }
+            catch
+            {
+                MessageBox.Show("Failed to get files in the directory!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Invoke(new Action(() => Layout.Settings.BackgroundType = BackgroundType.SolidColor));
+                return;
+            }
+
+            int thing = _random.Next(0, files.Length);
+            try
+            {
+                var image = Image.FromFile(files[thing]);
+
+                Invoke(new Action(() =>
+                {
+                    var oldImage = Layout.Settings.BackgroundImage;
+                    Layout.Settings.BackgroundImage = image;
+                    RandomImageFilePath = files[thing];
+
+                    oldImage?.Dispose();
+                }));
+            }
+            catch
+            {
+                MessageBox.Show("Random Image failed to load!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Invoke(new Action(() => Layout.Settings.BackgroundType = BackgroundType.SolidColor));
+            }
         }
 
         private void InitDragAndDrop()
@@ -632,20 +717,30 @@ namespace LiveSplit.View
 
         void TimerForm_SizeChanged(object sender, EventArgs e)
         {
-            CreateBakedBackground();
-            if (RefreshesRemaining <= 0)
+            if (SizeChangedByMenu && !Layout.Settings.AllowResizing)
             {
                 if (Layout.Mode == LayoutMode.Vertical)
-                {
-                    Layout.VerticalWidth = Size.Width;
-                    Layout.VerticalHeight = Size.Height;
-                }
+                    Size = new Size(Layout.VerticalWidth, Layout.VerticalHeight);
                 else
+                    Size = new Size(Layout.HorizontalWidth, Layout.HorizontalHeight);
+            }
+            else
+            {
+                CreateBakedBackground();
+                if (RefreshesRemaining <= 0)
                 {
-                    Layout.HorizontalWidth = Size.Width;
-                    Layout.HorizontalHeight = Size.Height;
+                    if (Layout.Mode == LayoutMode.Vertical)
+                    {
+                        Layout.VerticalWidth = Size.Width;
+                        Layout.VerticalHeight = Size.Height;
+                    }
+                    else
+                    {
+                        Layout.HorizontalWidth = Size.Width;
+                        Layout.HorizontalHeight = Size.Height;
+                    }
+                    MaintainMinimumSize();
                 }
-                MaintainMinimumSize();
             }
         }
 
@@ -1362,7 +1457,7 @@ namespace LiveSplit.View
 
         private void DrawBackground(Graphics g)
         {
-            if (Layout.Settings.BackgroundType == BackgroundType.Image)
+            if (Layout.Settings.BackgroundType == BackgroundType.Image || Layout.Settings.BackgroundType == BackgroundType.RandomImage)
             {
                 if (Layout.Settings.BackgroundImage != null)
                 {
@@ -1884,11 +1979,39 @@ namespace LiveSplit.View
                 || CurrentState.CurrentPhase == TimerPhase.Paused))
             {
                 DontRedraw = true;
-                result = MessageBox.Show(this, "This run did not beat your current splits. Would you like to save this run as a Personal Best?", "Save as Personal Best?", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-                DontRedraw = false;
-                if (result == DialogResult.Yes)
+                string name = "";
+                result = InputBox.Show("New Comparison", "Comparison Name: (leave blank to replace Personal Best)", ref name); DontRedraw = false;
+                if (result == DialogResult.OK)
                 {
-                    Model.ResetAndSetAttemptAsPB();
+                    if (name.Length <= 0)
+                        Model.ResetAndSetAttemptAsPB();
+                    else
+                    {
+                        if (CurrentState.Run.CustomComparisons.Contains(name))
+                        {
+                            result = MessageBox.Show("This Comparison already exists. Would you like to overwrite it?", "Overwrite " + name + "?", MessageBoxButtons.YesNoCancel);
+                            if (result == DialogResult.Yes)
+                            {
+                                foreach (var current in CurrentState.Run)
+                                    current.Comparisons[name] = current.SplitTime;
+                            }
+                            else if (result == DialogResult.Cancel)
+                                return false;
+                        }
+                        else if (CurrentState.Run.Comparisons.Contains(name))
+                        {
+                            result = MessageBox.Show("This Comparison already exists and is not a custom comparison.", "The change will be ignored.", MessageBoxButtons.OKCancel);
+                            if (result == DialogResult.Cancel)
+                                return false;
+                        }
+                        else
+                        {
+                            CurrentState.Run.CustomComparisons.Add(name);
+                            foreach (var current in CurrentState.Run)
+                                current.Comparisons[name] = current.SplitTime;
+                        }
+                        Model.Reset();
+                    }
                 }
                 else if (result == DialogResult.Cancel)
                     return false;
@@ -2346,9 +2469,64 @@ namespace LiveSplit.View
             }
         }
 
+        private void CopySplits()
+        {
+            string output = "";
+            foreach (var split in CurrentState.Run)
+            {
+                string SplitName = split.Name;
+                if (SplitName.Length > 0)
+                {
+                    int bracket1 = SplitName.IndexOf("{");
+                    int bracket2 = SplitName.IndexOf("}");
+                    if (SplitName.Substring(0, 1) == "-")
+                        SplitName = SplitName.Substring(1);
+
+                    if ((bracket1 != -1 && bracket2 != -1) && SplitName.Length > bracket2)
+                    {
+                        SplitName = SplitName.Substring(bracket2 + 1);
+                    }
+                }
+                string output_time = "";
+                if (CurrentState.CurrentTimingMethod == TimingMethod.RealTime)
+                {
+                    TimeSpan? pbTime = split.PersonalBestSplitTime.RealTime;
+                    if (pbTime.HasValue)
+                        output_time = pbTime.Value.ToString(@"hh\:mm\:ss\.fff");
+
+                }
+                else
+                {
+                    TimeSpan? pbTime = split.PersonalBestSplitTime.GameTime;
+                    if (pbTime.HasValue)
+                        output_time = pbTime.Value.ToString(@"hh\:mm\:ss\.fff");
+                }
+                output += SplitName + "," + output_time + "|";
+            }
+            Clipboard.SetText(output.Substring(0, output.Length - 1));
+        }
+
         private void saveAsMenuItem_Click(object sender, EventArgs e)
         {
             SaveSplitsAs(true);
+        }
+
+        private void copySplitsMenuItem_Click(object sender, EventArgs e)
+        {
+            CopySplits();
+        }
+
+        private void randomImageMenuItem_Click(object sender, EventArgs e)
+        {
+            GenerateRandomImage();
+        }
+
+        private void openRandomImageMenuItem_Click(object sender, EventArgs e)
+        {
+            if (File.Exists(RandomImageFilePath))
+            {
+                Process.Start("explorer.exe", "/select, " + RandomImageFilePath);
+            }
         }
 
         private void saveSplitsMenuItem_Click(object sender, EventArgs e)
@@ -2890,12 +3068,14 @@ namespace LiveSplit.View
 
         private void TimerForm_ResizeBegin(object sender, EventArgs e)
         {
+            SizeChangedByMenu = true;
             if (Size.Height > 0)
                 ResizingInitialAspectRatio = (float)Size.Width / Size.Height;
         }
 
         private void TimerForm_ResizeEnd(object sender, EventArgs e)
         {
+            SizeChangedByMenu = false;
             ResizingInitialAspectRatio = null;
         }
 
@@ -2905,6 +3085,7 @@ namespace LiveSplit.View
             {
                 var lssOpened = false;
                 var lslOpened = false;
+                var imgOpened = false;
 
                 foreach (string fileToOpen in fileList)
                 {
@@ -2916,6 +3097,11 @@ namespace LiveSplit.View
                         {
                             lslOpened = true;
                             OpenLayoutFromFile(fileToOpen);
+                        }
+                        else if (!imgOpened && (extension == ".png" || extension == ".jpg" || extension == ".jpeg" || extension == ".jfif"))
+                        {
+                            imgOpened = true;
+                            SetBackgroundImage(fileToOpen);
                         }
                         else if (!lssOpened)
                         {

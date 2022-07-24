@@ -36,6 +36,8 @@
             this.saveSplitsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveSplitsAsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeSplitsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copySplitsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.randomImageMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.controlMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comparisonMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -69,6 +71,8 @@
             this.saveSplitsMenuItem,
             this.saveSplitsAsMenuItem,
             this.closeSplitsMenuItem,
+            this.copySplitsMenuItem,
+            this.randomImageMenuItem,
             this.toolStripSeparator5,
             this.controlMenuItem,
             this.comparisonMenuItem,
@@ -121,7 +125,21 @@
             this.closeSplitsMenuItem.Size = new System.Drawing.Size(166, 22);
             this.closeSplitsMenuItem.Text = "Close Splits";
             this.closeSplitsMenuItem.Click += new System.EventHandler(this.closeSplitsMenuItem_Click);
+            //
+            // copySplitsMenuItem
             // 
+            this.copySplitsMenuItem.Name = "copySplitsMenuItem";
+            this.copySplitsMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.copySplitsMenuItem.Text = "Copy Splits";
+            this.copySplitsMenuItem.Click += new System.EventHandler(this.copySplitsMenuItem_Click);
+            //
+            // randomImageMenuItem
+            //
+            this.randomImageMenuItem.Name = "randomImageMenuItem";
+            this.randomImageMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.randomImageMenuItem.Text = "Random Image";
+            this.randomImageMenuItem.Click += new System.EventHandler(this.randomImageMenuItem_Click);
+            //
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
@@ -311,6 +329,8 @@
         private System.Windows.Forms.ToolStripMenuItem aboutMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitMenuItem;
         private System.Windows.Forms.ToolStripMenuItem closeSplitsMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copySplitsMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem randomImageMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveSplitsAsMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editLayoutMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveLayoutMenuItem;

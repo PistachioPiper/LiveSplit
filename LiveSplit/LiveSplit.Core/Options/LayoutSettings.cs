@@ -20,10 +20,12 @@ namespace LiveSplit.Options
         public Color PausedColor { get; set; }
         public Color TextOutlineColor { get; set; }
         public Color ShadowsColor { get; set; }
+        public Color SilverSegmentsColor { get; set; }
 
         public BackgroundType BackgroundType { get; set; }
 
         public Image BackgroundImage { get; set; }
+        public string BackgroundFolder { get; set; }
         public float ImageOpacity { get; set; }
         public float ImageBlur { get; set; }
 
@@ -36,9 +38,11 @@ namespace LiveSplit.Options
         public bool AntiAliasing { get; set; }
         public bool DropShadows { get; set; }
         public bool UseRainbowColor { get; set; }
+        public bool UseSilverSegmentsColor { get; set; }
 
         public float Opacity { get; set; }
         public bool MousePassThroughWhileRunning { get; set; }
+        public bool AllowResizing { get; set; }
 
         public object Clone()
         {
@@ -65,6 +69,7 @@ namespace LiveSplit.Options
             PausedColor = settings.PausedColor;
             TextOutlineColor = settings.TextOutlineColor;
             ShadowsColor = settings.ShadowsColor;
+            SilverSegmentsColor = settings.SilverSegmentsColor;
             TimerFont = settings.TimerFont.Clone() as Font;
             TimesFont = settings.TimesFont.Clone() as Font;
             TextFont = settings.TextFont.Clone() as Font;
@@ -74,8 +79,10 @@ namespace LiveSplit.Options
             DropShadows = settings.DropShadows;
             Opacity = settings.Opacity;
             MousePassThroughWhileRunning = settings.MousePassThroughWhileRunning;
+            AllowResizing = settings.AllowResizing;
             BackgroundType = settings.BackgroundType;
             BackgroundImage = settings.BackgroundImage;
+            BackgroundFolder = settings.BackgroundFolder;
             ImageOpacity = settings.ImageOpacity;
             ImageBlur = settings.ImageBlur;
         }

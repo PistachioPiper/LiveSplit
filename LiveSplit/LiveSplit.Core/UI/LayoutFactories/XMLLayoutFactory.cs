@@ -33,10 +33,13 @@ namespace LiveSplit.UI.LayoutFactories
             settings.UseRainbowColor = SettingsHelper.ParseBool(element["UseRainbowColor"], false);
             settings.NotRunningColor = SettingsHelper.ParseColor(element["NotRunningColor"]);
             settings.PausedColor = SettingsHelper.ParseColor(element["PausedColor"], Color.FromArgb(122, 122, 122));
+            settings.SilverSegmentsColor = SettingsHelper.ParseColor(element["SilverSegmentsColor"], Color.FromArgb(122, 122, 122));
+            settings.UseSilverSegmentsColor = SettingsHelper.ParseBool(element["UseSilverSegmentsColor"], false);
             settings.AntiAliasing = SettingsHelper.ParseBool(element["AntiAliasing"], true);
             settings.DropShadows = SettingsHelper.ParseBool(element["DropShadows"], true);
             settings.Opacity = SettingsHelper.ParseFloat(element["Opacity"], 1);
             settings.MousePassThroughWhileRunning = SettingsHelper.ParseBool(element["MousePassThroughWhileRunning"]);
+            settings.AllowResizing = SettingsHelper.ParseBool(element["AllowResizing"], true);
             settings.TextOutlineColor = SettingsHelper.ParseColor(element["TextOutlineColor"], Color.FromArgb(0, 0, 0, 0));
             settings.ShadowsColor = SettingsHelper.ParseColor(element["ShadowsColor"], Color.FromArgb(128, 0, 0, 0));
             settings.ShowBestSegments = SettingsHelper.ParseBool(element["ShowBestSegments"]);
@@ -81,6 +84,7 @@ namespace LiveSplit.UI.LayoutFactories
             }
 
             settings.BackgroundImage = SettingsHelper.GetImageFromElement(element["BackgroundImage"]);
+            settings.BackgroundFolder = SettingsHelper.ParseString(element["BackgroundFolder"]);
 
             return settings;
         }

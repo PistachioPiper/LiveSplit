@@ -170,12 +170,34 @@ namespace LiveSplit.Model
                 }
             }
 
-            if (showBestSegments && state.LayoutSettings.ShowBestSegments && CheckBestSegment(state, splitNumber, method))
+            if (showBestSegments && state.LayoutSettings.UseSilverSegmentsColor && CheckSilverSegment(state, splitNumber, method))
+            {
+                splitColor = state.LayoutSettings.SilverSegmentsColor;
+            }
+            else if (showBestSegments && state.LayoutSettings.ShowBestSegments && CheckBestSegment(state, splitNumber, method))
             {
                 splitColor = GetBestSegmentColor(state);
             }
 
             return splitColor;
+        }
+
+        /// <summary>
+        /// Calculates whether or not the Split Times for the indicated split qualify as a Silver Segment.
+        /// </summary>
+        /// <param name="state">The current state.</param>
+        /// <param name="splitNumber">The split to check.</param>
+        /// <param name="method">The timing method to use.</param>
+        /// <returns>Returns whether or not the indicated split is a Silver Segment.</returns>
+        public static bool CheckSilverSegment(LiveSplitState state, int splitNumber, TimingMethod method)
+        {
+            if (state.Run[splitNumber].SplitTime[method] == null)
+                return false;
+            var curSegment = GetPreviousSegmentTime(state, splitNumber, method);
+            var bestSegment = state.Run[splitNumber].BestSegmentTime[method];
+            if (bestSegment == null)
+                return false;
+            return Convert.ToInt32(curSegment.Value.TotalMilliseconds / 10) == Convert.ToInt32(bestSegment.Value.TotalMilliseconds) / 10;
         }
 
         /// <summary>

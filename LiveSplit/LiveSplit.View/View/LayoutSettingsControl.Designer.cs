@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.chkMousePassThroughWhileRunning = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblSilverSegment = new System.Windows.Forms.Label();
             this.lblOutlines = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.btnGlod = new System.Windows.Forms.Button();
@@ -59,7 +59,8 @@
             this.btnShadowsColor = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.btnTextOutlineColor = new System.Windows.Forms.Button();
-            this.chkAlwaysOnTop = new System.Windows.Forms.CheckBox();
+            this.btnSilverSegmentsColor = new System.Windows.Forms.Button();
+            this.chkSilverSegments = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.chkAntiAliasing = new System.Windows.Forms.CheckBox();
@@ -73,7 +74,6 @@
             this.lblTimer = new System.Windows.Forms.Label();
             this.lblTimes = new System.Windows.Forms.Label();
             this.lblText = new System.Windows.Forms.Label();
-            this.chkBestSegments = new System.Windows.Forms.CheckBox();
             this.label13 = new System.Windows.Forms.Label();
             this.trkOpacity = new System.Windows.Forms.TrackBar();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -86,6 +86,10 @@
             this.btnBackground = new System.Windows.Forms.Button();
             this.lblImageOpacity = new System.Windows.Forms.Label();
             this.lblBlur = new System.Windows.Forms.Label();
+            this.chkBestSegments = new System.Windows.Forms.CheckBox();
+            this.chkMousePassThroughWhileRunning = new System.Windows.Forms.CheckBox();
+            this.chkAlwaysOnTop = new System.Windows.Forms.CheckBox();
+            this.chkAllowResizing = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel5.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -112,6 +116,7 @@
             this.tableLayoutPanel5.Controls.Add(this.chkBestSegments, 0, 4);
             this.tableLayoutPanel5.Controls.Add(this.chkMousePassThroughWhileRunning, 0, 5);
             this.tableLayoutPanel5.Controls.Add(this.chkAlwaysOnTop, 2, 4);
+            this.tableLayoutPanel5.Controls.Add(this.chkAllowResizing, 2, 5);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(7, 7);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -119,25 +124,11 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 84F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 142F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 228F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(462, 541);
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 257F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(465, 573);
             this.tableLayoutPanel5.TabIndex = 41;
-            // 
-            // chkMousePassThroughWhileRunning
-            // 
-            this.chkMousePassThroughWhileRunning.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.chkMousePassThroughWhileRunning.AutoSize = true;
-            this.tableLayoutPanel5.SetColumnSpan(this.chkMousePassThroughWhileRunning, 3);
-            this.chkMousePassThroughWhileRunning.Location = new System.Drawing.Point(7, 515);
-            this.chkMousePassThroughWhileRunning.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
-            this.chkMousePassThroughWhileRunning.Name = "chkMousePassThroughWhileRunning";
-            this.chkMousePassThroughWhileRunning.Size = new System.Drawing.Size(249, 23);
-            this.chkMousePassThroughWhileRunning.TabIndex = 27;
-            this.chkMousePassThroughWhileRunning.Text = "Ignore Mouse While Running and Not In Focus";
-            this.chkMousePassThroughWhileRunning.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -146,7 +137,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 258);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(456, 222);
+            this.groupBox2.Size = new System.Drawing.Size(459, 251);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Colors";
@@ -159,6 +150,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 197F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel2.Controls.Add(this.lblSilverSegment, 0, 7);
             this.tableLayoutPanel2.Controls.Add(this.lblOutlines, 0, 6);
             this.tableLayoutPanel2.Controls.Add(this.label9, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnGlod, 2, 0);
@@ -186,10 +178,12 @@
             this.tableLayoutPanel2.Controls.Add(this.btnShadowsColor, 4, 6);
             this.tableLayoutPanel2.Controls.Add(this.label14, 3, 6);
             this.tableLayoutPanel2.Controls.Add(this.btnTextOutlineColor, 2, 6);
+            this.tableLayoutPanel2.Controls.Add(this.btnSilverSegmentsColor, 2, 7);
+            this.tableLayoutPanel2.Controls.Add(this.chkSilverSegments, 3, 7);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 7;
+            this.tableLayoutPanel2.RowCount = 8;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
@@ -197,9 +191,19 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(450, 203);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(453, 232);
             this.tableLayoutPanel2.TabIndex = 0;
+            // 
+            // lblSilverSegment
+            // 
+            this.lblSilverSegment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblSilverSegment.AutoSize = true;
+            this.lblSilverSegment.Location = new System.Drawing.Point(3, 211);
+            this.lblSilverSegment.Name = "lblSilverSegment";
+            this.lblSilverSegment.Size = new System.Drawing.Size(160, 13);
+            this.lblSilverSegment.TabIndex = 47;
+            this.lblSilverSegment.Text = "Silver Segment";
             // 
             // lblOutlines
             // 
@@ -223,8 +227,8 @@
             // 
             // btnGlod
             // 
-            this.btnGlod.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnGlod.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGlod.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnGlod.Location = new System.Drawing.Point(198, 3);
@@ -286,8 +290,8 @@
             // 
             // btnAheadGaining
             // 
-            this.btnAheadGaining.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnAheadGaining.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAheadGaining.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAheadGaining.Location = new System.Drawing.Point(198, 32);
@@ -299,8 +303,8 @@
             // 
             // btnAheadLosing
             // 
-            this.btnAheadLosing.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnAheadLosing.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAheadLosing.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAheadLosing.Location = new System.Drawing.Point(198, 61);
@@ -312,8 +316,8 @@
             // 
             // btnBehindGaining
             // 
-            this.btnBehindGaining.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnBehindGaining.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBehindGaining.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnBehindGaining.Location = new System.Drawing.Point(198, 90);
@@ -325,8 +329,8 @@
             // 
             // btnTextColor
             // 
-            this.btnTextColor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnTextColor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnTextColor.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnTextColor.Location = new System.Drawing.Point(198, 148);
@@ -338,8 +342,8 @@
             // 
             // btnBehindLosing
             // 
-            this.btnBehindLosing.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnBehindLosing.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBehindLosing.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnBehindLosing.Location = new System.Drawing.Point(198, 119);
@@ -357,7 +361,7 @@
             this.chkRainbow.Location = new System.Drawing.Point(231, 6);
             this.chkRainbow.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
             this.chkRainbow.Name = "chkRainbow";
-            this.chkRainbow.Size = new System.Drawing.Size(216, 17);
+            this.chkRainbow.Size = new System.Drawing.Size(219, 17);
             this.chkRainbow.TabIndex = 12;
             this.chkRainbow.Text = "Use Rainbow Best Segment Color";
             this.chkRainbow.UseVisualStyleBackColor = true;
@@ -415,78 +419,78 @@
             // 
             // btnNotRunning
             // 
-            this.btnNotRunning.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnNotRunning.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNotRunning.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnNotRunning.Location = new System.Drawing.Point(424, 32);
             this.btnNotRunning.Name = "btnNotRunning";
-            this.btnNotRunning.Size = new System.Drawing.Size(23, 23);
+            this.btnNotRunning.Size = new System.Drawing.Size(26, 23);
             this.btnNotRunning.TabIndex = 14;
             this.btnNotRunning.UseVisualStyleBackColor = false;
             this.btnNotRunning.Click += new System.EventHandler(this.ColorButtonClick);
             // 
             // btnThinSep
             // 
-            this.btnThinSep.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnThinSep.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnThinSep.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnThinSep.Location = new System.Drawing.Point(424, 119);
             this.btnThinSep.Name = "btnThinSep";
-            this.btnThinSep.Size = new System.Drawing.Size(23, 23);
+            this.btnThinSep.Size = new System.Drawing.Size(26, 23);
             this.btnThinSep.TabIndex = 20;
             this.btnThinSep.UseVisualStyleBackColor = false;
             this.btnThinSep.Click += new System.EventHandler(this.ColorButtonClick);
             // 
             // btnPB
             // 
-            this.btnPB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnPB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPB.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPB.Location = new System.Drawing.Point(424, 61);
             this.btnPB.Name = "btnPB";
-            this.btnPB.Size = new System.Drawing.Size(23, 23);
+            this.btnPB.Size = new System.Drawing.Size(26, 23);
             this.btnPB.TabIndex = 16;
             this.btnPB.UseVisualStyleBackColor = false;
             this.btnPB.Click += new System.EventHandler(this.ColorButtonClick);
             // 
             // btnSeparators
             // 
-            this.btnSeparators.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnSeparators.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSeparators.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSeparators.Location = new System.Drawing.Point(424, 148);
             this.btnSeparators.Name = "btnSeparators";
-            this.btnSeparators.Size = new System.Drawing.Size(23, 23);
+            this.btnSeparators.Size = new System.Drawing.Size(26, 23);
             this.btnSeparators.TabIndex = 22;
             this.btnSeparators.UseVisualStyleBackColor = false;
             this.btnSeparators.Click += new System.EventHandler(this.ColorButtonClick);
             // 
             // btnPausedColor
             // 
-            this.btnPausedColor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnPausedColor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPausedColor.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPausedColor.Location = new System.Drawing.Point(424, 90);
             this.btnPausedColor.Name = "btnPausedColor";
-            this.btnPausedColor.Size = new System.Drawing.Size(23, 23);
+            this.btnPausedColor.Size = new System.Drawing.Size(26, 23);
             this.btnPausedColor.TabIndex = 18;
             this.btnPausedColor.UseVisualStyleBackColor = false;
             this.btnPausedColor.Click += new System.EventHandler(this.ColorButtonClick);
             // 
             // btnShadowsColor
             // 
-            this.btnShadowsColor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnShadowsColor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnShadowsColor.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnShadowsColor.Location = new System.Drawing.Point(424, 177);
             this.btnShadowsColor.Name = "btnShadowsColor";
-            this.btnShadowsColor.Size = new System.Drawing.Size(23, 23);
+            this.btnShadowsColor.Size = new System.Drawing.Size(26, 23);
             this.btnShadowsColor.TabIndex = 24;
             this.btnShadowsColor.UseVisualStyleBackColor = false;
             this.btnShadowsColor.Click += new System.EventHandler(this.ColorButtonClick);
@@ -503,8 +507,8 @@
             // 
             // btnTextOutlineColor
             // 
-            this.btnTextOutlineColor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnTextOutlineColor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnTextOutlineColor.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnTextOutlineColor.Location = new System.Drawing.Point(198, 177);
@@ -514,18 +518,31 @@
             this.btnTextOutlineColor.UseVisualStyleBackColor = false;
             this.btnTextOutlineColor.Click += new System.EventHandler(this.ColorButtonClick);
             // 
-            // chkAlwaysOnTop
+            // btnSilverSegmentsColor
             // 
-            this.chkAlwaysOnTop.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.chkAlwaysOnTop.AutoSize = true;
-            this.chkAlwaysOnTop.Location = new System.Drawing.Point(237, 486);
-            this.chkAlwaysOnTop.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
-            this.chkAlwaysOnTop.Name = "chkAlwaysOnTop";
-            this.chkAlwaysOnTop.Size = new System.Drawing.Size(96, 23);
-            this.chkAlwaysOnTop.TabIndex = 25;
-            this.chkAlwaysOnTop.Text = "Always on Top";
-            this.chkAlwaysOnTop.UseVisualStyleBackColor = true;
+            this.btnSilverSegmentsColor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSilverSegmentsColor.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSilverSegmentsColor.Location = new System.Drawing.Point(198, 206);
+            this.btnSilverSegmentsColor.Name = "btnSilverSegmentsColor";
+            this.btnSilverSegmentsColor.Size = new System.Drawing.Size(23, 23);
+            this.btnSilverSegmentsColor.TabIndex = 48;
+            this.btnSilverSegmentsColor.UseVisualStyleBackColor = false;
+            this.btnSilverSegmentsColor.Click += new System.EventHandler(this.ColorButtonClick);
+            // 
+            // chkSilverSegments
+            // 
+            this.chkSilverSegments.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkSilverSegments.AutoSize = true;
+            this.chkSilverSegments.Location = new System.Drawing.Point(231, 209);
+            this.chkSilverSegments.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
+            this.chkSilverSegments.Name = "chkSilverSegments";
+            this.chkSilverSegments.Size = new System.Drawing.Size(187, 17);
+            this.chkSilverSegments.TabIndex = 49;
+            this.chkSilverSegments.Text = "Use Silver Segment Color";
+            this.chkSilverSegments.UseVisualStyleBackColor = true;
+            this.chkSilverSegments.CheckedChanged += new System.EventHandler(this.chkSilverSegments_CheckedChanged);
             // 
             // groupBox1
             // 
@@ -534,7 +551,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 116);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(456, 136);
+            this.groupBox1.Size = new System.Drawing.Size(459, 136);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Fonts";
@@ -565,7 +582,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(450, 117);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(453, 117);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // chkAntiAliasing
@@ -615,7 +632,7 @@
             // btnTimer
             // 
             this.btnTimer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTimer.Location = new System.Drawing.Point(372, 3);
+            this.btnTimer.Location = new System.Drawing.Point(375, 3);
             this.btnTimer.Name = "btnTimer";
             this.btnTimer.Size = new System.Drawing.Size(75, 23);
             this.btnTimer.TabIndex = 6;
@@ -626,7 +643,7 @@
             // btnTimes
             // 
             this.btnTimes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTimes.Location = new System.Drawing.Point(372, 32);
+            this.btnTimes.Location = new System.Drawing.Point(375, 32);
             this.btnTimes.Name = "btnTimes";
             this.btnTimes.Size = new System.Drawing.Size(75, 23);
             this.btnTimes.TabIndex = 7;
@@ -637,7 +654,7 @@
             // btnTextFont
             // 
             this.btnTextFont.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTextFont.Location = new System.Drawing.Point(372, 61);
+            this.btnTextFont.Location = new System.Drawing.Point(375, 61);
             this.btnTextFont.Name = "btnTextFont";
             this.btnTextFont.Size = new System.Drawing.Size(75, 23);
             this.btnTextFont.TabIndex = 8;
@@ -653,7 +670,7 @@
             this.chkDropShadows.Location = new System.Drawing.Point(231, 93);
             this.chkDropShadows.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
             this.chkDropShadows.Name = "chkDropShadows";
-            this.chkDropShadows.Size = new System.Drawing.Size(216, 17);
+            this.chkDropShadows.Size = new System.Drawing.Size(219, 17);
             this.chkDropShadows.TabIndex = 10;
             this.chkDropShadows.Text = "Drop Shadows";
             this.chkDropShadows.UseVisualStyleBackColor = true;
@@ -665,7 +682,7 @@
             this.tableLayoutPanel1.SetColumnSpan(this.lblTimer, 2);
             this.lblTimer.Location = new System.Drawing.Point(66, 8);
             this.lblTimer.Name = "lblTimer";
-            this.lblTimer.Size = new System.Drawing.Size(300, 13);
+            this.lblTimer.Size = new System.Drawing.Size(303, 13);
             this.lblTimer.TabIndex = 23;
             this.lblTimer.Text = "something";
             // 
@@ -676,7 +693,7 @@
             this.tableLayoutPanel1.SetColumnSpan(this.lblTimes, 2);
             this.lblTimes.Location = new System.Drawing.Point(66, 37);
             this.lblTimes.Name = "lblTimes";
-            this.lblTimes.Size = new System.Drawing.Size(300, 13);
+            this.lblTimes.Size = new System.Drawing.Size(303, 13);
             this.lblTimes.TabIndex = 24;
             this.lblTimes.Text = "something";
             // 
@@ -687,23 +704,9 @@
             this.tableLayoutPanel1.SetColumnSpan(this.lblText, 2);
             this.lblText.Location = new System.Drawing.Point(66, 66);
             this.lblText.Name = "lblText";
-            this.lblText.Size = new System.Drawing.Size(300, 13);
+            this.lblText.Size = new System.Drawing.Size(303, 13);
             this.lblText.TabIndex = 25;
             this.lblText.Text = "something";
-            // 
-            // chkBestSegments
-            // 
-            this.chkBestSegments.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.chkBestSegments.AutoSize = true;
-            this.tableLayoutPanel5.SetColumnSpan(this.chkBestSegments, 2);
-            this.chkBestSegments.Location = new System.Drawing.Point(7, 486);
-            this.chkBestSegments.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
-            this.chkBestSegments.Name = "chkBestSegments";
-            this.chkBestSegments.Size = new System.Drawing.Size(127, 23);
-            this.chkBestSegments.TabIndex = 26;
-            this.chkBestSegments.Text = "Show Best Segments";
-            this.chkBestSegments.UseVisualStyleBackColor = true;
             // 
             // label13
             // 
@@ -723,7 +726,7 @@
             this.trkOpacity.Maximum = 100;
             this.trkOpacity.Minimum = 5;
             this.trkOpacity.Name = "trkOpacity";
-            this.trkOpacity.Size = new System.Drawing.Size(359, 23);
+            this.trkOpacity.Size = new System.Drawing.Size(362, 23);
             this.trkOpacity.TabIndex = 5;
             this.trkOpacity.TickStyle = System.Windows.Forms.TickStyle.None;
             this.trkOpacity.Value = 5;
@@ -735,7 +738,7 @@
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.Location = new System.Drawing.Point(3, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(456, 78);
+            this.groupBox3.Size = new System.Drawing.Size(459, 78);
             this.groupBox3.TabIndex = 17;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Background";
@@ -763,7 +766,7 @@
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(450, 59);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(453, 59);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // trkBlur
@@ -772,7 +775,7 @@
             this.trkBlur.Location = new System.Drawing.Point(320, 32);
             this.trkBlur.Maximum = 100;
             this.trkBlur.Name = "trkBlur";
-            this.trkBlur.Size = new System.Drawing.Size(127, 24);
+            this.trkBlur.Size = new System.Drawing.Size(130, 24);
             this.trkBlur.TabIndex = 4;
             this.trkBlur.TickStyle = System.Windows.Forms.TickStyle.None;
             // 
@@ -799,10 +802,11 @@
             "Solid Color",
             "Vertical Gradient",
             "Horizontal Gradient",
-            "Image"});
+            "Image",
+            "Random Image"});
             this.cmbBackgroundType.Location = new System.Drawing.Point(227, 4);
             this.cmbBackgroundType.Name = "cmbBackgroundType";
-            this.cmbBackgroundType.Size = new System.Drawing.Size(220, 21);
+            this.cmbBackgroundType.Size = new System.Drawing.Size(223, 21);
             this.cmbBackgroundType.TabIndex = 2;
             this.cmbBackgroundType.SelectedIndexChanged += new System.EventHandler(this.cmbGradientType_SelectedIndexChanged);
             // 
@@ -818,8 +822,8 @@
             // 
             // btnBackground2
             // 
-            this.btnBackground2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnBackground2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBackground2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnBackground2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
@@ -832,8 +836,8 @@
             // 
             // btnBackground
             // 
-            this.btnBackground.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnBackground.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBackground.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnBackground.Location = new System.Drawing.Point(169, 3);
@@ -863,6 +867,60 @@
             this.lblBlur.TabIndex = 22;
             this.lblBlur.Text = "Image Blur:";
             // 
+            // chkBestSegments
+            // 
+            this.chkBestSegments.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.chkBestSegments.AutoSize = true;
+            this.tableLayoutPanel5.SetColumnSpan(this.chkBestSegments, 2);
+            this.chkBestSegments.Location = new System.Drawing.Point(7, 515);
+            this.chkBestSegments.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
+            this.chkBestSegments.Name = "chkBestSegments";
+            this.chkBestSegments.Size = new System.Drawing.Size(127, 26);
+            this.chkBestSegments.TabIndex = 26;
+            this.chkBestSegments.Text = "Show Best Segments";
+            this.chkBestSegments.UseVisualStyleBackColor = true;
+            // 
+            // chkMousePassThroughWhileRunning
+            // 
+            this.chkMousePassThroughWhileRunning.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.chkMousePassThroughWhileRunning.AutoSize = true;
+            this.tableLayoutPanel5.SetColumnSpan(this.chkMousePassThroughWhileRunning, 2);
+            this.chkMousePassThroughWhileRunning.Location = new System.Drawing.Point(7, 547);
+            this.chkMousePassThroughWhileRunning.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
+            this.chkMousePassThroughWhileRunning.Name = "chkMousePassThroughWhileRunning";
+            this.chkMousePassThroughWhileRunning.Size = new System.Drawing.Size(164, 23);
+            this.chkMousePassThroughWhileRunning.TabIndex = 27;
+            this.chkMousePassThroughWhileRunning.Text = "Ignore Mouse While Running";
+            this.chkMousePassThroughWhileRunning.UseVisualStyleBackColor = true;
+            // 
+            // chkAlwaysOnTop
+            // 
+            this.chkAlwaysOnTop.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.chkAlwaysOnTop.AutoSize = true;
+            this.chkAlwaysOnTop.Location = new System.Drawing.Point(238, 515);
+            this.chkAlwaysOnTop.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
+            this.chkAlwaysOnTop.Name = "chkAlwaysOnTop";
+            this.chkAlwaysOnTop.Size = new System.Drawing.Size(96, 26);
+            this.chkAlwaysOnTop.TabIndex = 25;
+            this.chkAlwaysOnTop.Text = "Always on Top";
+            this.chkAlwaysOnTop.UseVisualStyleBackColor = true;
+            // 
+            // chkAllowResizing
+            // 
+            this.chkAllowResizing.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.chkAllowResizing.AutoSize = true;
+            this.chkAllowResizing.Location = new System.Drawing.Point(238, 547);
+            this.chkAllowResizing.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
+            this.chkAllowResizing.Name = "chkAllowResizing";
+            this.chkAllowResizing.Size = new System.Drawing.Size(154, 23);
+            this.chkAllowResizing.TabIndex = 28;
+            this.chkAllowResizing.Text = "Allow Resizing by Dragging";
+            this.chkAllowResizing.UseVisualStyleBackColor = true;
+            // 
             // LayoutSettingsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -870,7 +928,7 @@
             this.Controls.Add(this.tableLayoutPanel5);
             this.Name = "LayoutSettingsControl";
             this.Padding = new System.Windows.Forms.Padding(7);
-            this.Size = new System.Drawing.Size(476, 555);
+            this.Size = new System.Drawing.Size(479, 587);
             this.Load += new System.EventHandler(this.LayoutSettingsControl_Load);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
@@ -950,5 +1008,9 @@
         private System.Windows.Forms.Label lblOutlines;
         private System.Windows.Forms.Button btnTextOutlineColor;
         private System.Windows.Forms.CheckBox chkMousePassThroughWhileRunning;
+        private System.Windows.Forms.CheckBox chkAllowResizing;
+        private System.Windows.Forms.Label lblSilverSegment;
+        private System.Windows.Forms.Button btnSilverSegmentsColor;
+        private System.Windows.Forms.CheckBox chkSilverSegments;
     }
 }
